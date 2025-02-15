@@ -11,7 +11,8 @@ class layer:
          self.weights = np.random.rand(self.number_inputs, self.number_outputs)
 
          if bias:
-            self.weights = np.vstack((self.weights, np.random.rand(1, self.number_outputs)))
+            self.weights = np.vstack((self.weights, np.random.rand(1, self.number_outputs)))  # match the bias by making the matrix vertical, 
+                                                                                                #think of the bias as an input neuron that we add to the rest of the neurons 
 
     def get_batch_size(self):
         return self.batch_size
@@ -25,10 +26,10 @@ class all_layers:
     def __init__(self, *layers):
         self.model= list(layers)
     
-    def append(self, *layers):
+    def append(self, *layers):     #so we can add more layers if we wish to
         for layer in layers:
             self.model.append(layer)
 
-    def set_alpha(self, update_alpha):
+    def set_alpha(self, update_alpha):   #update alhpa value for all layers
         for layer in self.model:
             layer.set_alpha(update_alpha)
