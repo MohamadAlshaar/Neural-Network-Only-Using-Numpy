@@ -8,6 +8,7 @@ class ReLu:   # f(z)=0 if z <=0, 1 otherwise
 
 class Sigmoid:    # f(x)= 1/(1+e^(-z))
     def __call__(self, pre_activated_output):
+        pre_activated_output = np.clip(pre_activated_output, -1000, 1000)
         return 1 / (1 + np.exp(-pre_activated_output))
     
 
